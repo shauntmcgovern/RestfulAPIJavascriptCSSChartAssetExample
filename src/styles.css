@@ -353,8 +353,8 @@ body {
   width: 100px;*/
 }
 .circle-imagePatientInformation {
-  top: 140px;
-  left: 1299px;
+  display: block;
+  margin: 32px auto 0;
   width: 200px;
   height: 200px;
 

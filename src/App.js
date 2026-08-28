@@ -183,8 +183,7 @@ function App() {
   //So it should be as easy as JessicaTaylor which is const JT = item.id[3] then JT.insurance_type should only display her type of insurance
   //and also JT.phone_number should display her phone number so this step is very difficult.
 
-  const JessicaTaylorObject = data.map((item) => item.id === "Jessica Taylor");
-  const targetItem = data.find((item) => item.id === 1);
+  const JessicaTaylorObject = data.find((item) => item.name === "Jessica Taylor");
   //const jsonString = '{}';
   //const patientArray = JSON.parse(jsonData);
   //define data.map and also define item which was the general call from the API JSON:-;'::-')';?/'?/'
@@ -198,9 +197,11 @@ function App() {
     const apiLabels = data.map((item) => item.name); // X-Axis values
     //const apiValues = data.map((item) => item.name === "Jessica Taylor".blood_pressure); // Y-Axis values
     //const JessicaObject = jsonData.filter((obj) => obj.item?.name === "Jessica Taylor");
+    
     const JessicaTaylorObject = data.map(
       (item) => item.name === "Jessica Taylor"
     );
+
     const JessicaTaylorMonth = JessicaTaylorObject.month;
     //const JessicaTaylorInformation = jsonData.filter((obj) => obj.item.name === "Jessica Taylor");
     const JessicaTaylorObjectDiagnosisHistory = data.map(
@@ -314,21 +315,59 @@ function App() {
 
         <div class="column">
           <div class="rectangle-containerPatientInformation">
+            &nbsp;
             <img
               src="JessTaylor.png"
               alt="PatientPicture"
               className="circle-imagePatientInformation"
             />
-            {data.map((item) => (
-              <span key={item.id} className="name-text">
-                {item.date_of_birth}
-              </span>
-            ))}
-            {data.map((item) => (
-              <span key={item.id} className="name-text">
-                {item.name}
-              </span>
-            ))}
+          
+          <span>
+          <img src="./BirthIcon.jpg" alt="DateOfBirthIcon" />
+          Date of Birth
+          </span>&nbsp;&nbsp;
+          {JessicaTaylorObject && (
+            <p className="name-text">
+              {new Date(JessicaTaylorObject.date_of_birth).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+          )}
+          <span>
+          <img src="./FemaleIcon.jpg" alt="GenderIcon" />
+          Gender
+          </span>&nbsp;&nbsp;
+          {JessicaTaylorObject && (
+            <p className="name-text">
+              {JessicaTaylorObject.gender}
+            </p>
+          )}
+          <span>
+          <img src="./PhoneIcon.jpg" alt="PhoneIcon" />
+          Contact Info.
+          </span>&nbsp;&nbsp;
+          {JessicaTaylorObject && (
+            <p className="name-text">
+              {JessicaTaylorObject.phone_number}
+            </p>
+          )}
+          <span>
+          <img src="./PhoneIcon.jpg" alt="EmergencyPhoneIcon" />
+          Emergency Contacts
+          </span>&nbsp;&nbsp;
+          {JessicaTaylorObject && (
+            <p className="name-text">
+              {JessicaTaylorObject.emergency_contact}
+            </p>
+          )}
+          <span>
+          <img src="./InsuranceIcon.jpg" alt="InsuranceIcon" />
+          Insurance Provider
+          </span>&nbsp;&nbsp;
+          {JessicaTaylorObject && (
+            <p className="name-text">
+              {JessicaTaylorObject.insurance_type}
+            </p>
+          )}
+          <p>Show All Information</p>
           </div>
           <div class="rectangle-containerLabResults">
             <h2 className="h2">Lab Results'A::A::'A::A::</h2>
