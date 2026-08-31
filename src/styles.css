@@ -387,13 +387,26 @@ body {
 }
 .circle-imagePatientInformation {
   display: block;
-  margin: 32px auto 0;
+  margin: 20px auto 0;
   width: 200px;
   height: 200px;
 
   /* UI Properties 
   background: transparent url("img/Layer 2.png") 0% 0% no-repeat padding-box;
   opacity: 1;*/
+}
+.iconPatientInformation {
+  display: inline-block;
+  margin: 0 0 0 20px;
+  width: 42px;
+  height: 42px;
+}
+.textPatientInformation {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+  font-family: "Manrope", sans-serif; 
+  font-size: 14px;     /* Spacing between image and text */
 }
 .circle-image {
   width: 80px;
@@ -407,6 +420,16 @@ body {
   margin-top: 10px;
   font-size: 14px;
   text-align: left;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Handles long names */
+  font-family: "Manrope", sans-serif;
+  font-weight: bold; /* or 700 */
+}
+.name-textPatientInformation {
+  margin-top: 10px;
+  font-size: 24px;
+  text-align: center;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis; /* Handles long names */
