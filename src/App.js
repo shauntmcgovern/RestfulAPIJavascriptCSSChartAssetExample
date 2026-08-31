@@ -184,88 +184,133 @@ function App() {
   //and also JT.phone_number should display her phone number so this step is very difficult.
 
   const JessicaTaylorObject = data.find((item) => item.name === "Jessica Taylor");
-  //const jsonString = '{}';
-  //const patientArray = JSON.parse(jsonData);
-  //define data.map and also define item which was the general call from the API JSON:-;'::-')';?/'?/'
-  async function renderDynamicChart() {
-    // Fetch the data from the server
-    //const response = await fetch(API_URL);
-    //const rawData = await response.json();
-
-    // 3. Map your API data to arrays Chart.js can read
-    // Assumes your API returns an array of objects like: [{ month: 'Jan', total: 100 }, ...]
-    const apiLabels = data.map((item) => item.name); // X-Axis values
-    //const apiValues = data.map((item) => item.name === "Jessica Taylor".blood_pressure); // Y-Axis values
-    //const JessicaObject = jsonData.filter((obj) => obj.item?.name === "Jessica Taylor");
+  
+  // Move chart rendering into useEffect so it runs after data is loaded
+  useEffect(() => {
+    if (data.length === 0 || !JessicaTaylorObject) return;
     
-    //const JessicaTaylorObject = data.map((item) => item.name === "Jessica Taylor");
-
-    /*const JessicaTaylorMonth = JessicaTaylorObject.month;
-    //const JessicaTaylorInformation = jsonData.filter((obj) => obj.item.name === "Jessica Taylor");
-    const JessicaTaylorObjectDiagnosisHistory = data.map(
-      (item) => JessicaTaylorObject.diagnosis_history
-    );
-    const JessicaTaylorObjectDiagnosisHistoryMonthYear = data.map(
-      (item) => JessicaTaylorObjectDiagnosisHistory.month
-    );
-    //const JessicaTaylorBloodPressure =
+    async function renderDynamicChart() {
+      // Extract Jessica Taylor's systolic and diastolic blood pressure values for last 6 months (Oct 2023 - Mar 2024)
+      let JessicaTaylorOctober2023Systolic = "";
+      let JessicaTaylorNovember2023Systolic = "";
+      let JessicaTaylorDecember2023Systolic = "";
+      let JessicaTaylorJanuary2024Systolic = "";
+      let JessicaTaylorFebruary2024Systolic = "";
+      let JessicaTaylorMarch2024Systolic = "";
+      
+      let JessicaTaylorOctober2023Diastolic = "";
+      let JessicaTaylorNovember2023Diastolic = "";
+      let JessicaTaylorDecember2023Diastolic = "";
+      let JessicaTaylorJanuary2024Diastolic = "";
+      let JessicaTaylorFebruary2024Diastolic = "";
+      let JessicaTaylorMarch2024Diastolic = "";
+      
+      if (JessicaTaylorObject && JessicaTaylorObject.diagnosis_history) {
+        JessicaTaylorObject.diagnosis_history.forEach((entry) => {
+          if (entry.blood_pressure && entry.blood_pressure.systolic && entry.blood_pressure.diastolic) {
+            const systolicValue = entry.blood_pressure.systolic.value;
+            const diastolicValue = entry.blood_pressure.diastolic.value;
+            
+            if ((entry.month === "October" || entry.month === 10) && entry.year === 2023) {
+              JessicaTaylorOctober2023Systolic = systolicValue;
+              JessicaTaylorOctober2023Diastolic = diastolicValue;
+            }
+            if ((entry.month === "November" || entry.month === 11) && entry.year === 2023) {
+              JessicaTaylorNovember2023Systolic = systolicValue;
+              JessicaTaylorNovember2023Diastolic = diastolicValue;
+            }
+            if ((entry.month === "December" || entry.month === 12) && entry.year === 2023) {
+              JessicaTaylorDecember2023Systolic = systolicValue;
+              JessicaTaylorDecember2023Diastolic = diastolicValue;
+            }
+            if ((entry.month === "January" || entry.month === 1) && entry.year === 2024) {
+              JessicaTaylorJanuary2024Systolic = systolicValue;
+              JessicaTaylorJanuary2024Diastolic = diastolicValue;
+            }
+            if ((entry.month === "February" || entry.month === 2) && entry.year === 2024) {
+              JessicaTaylorFebruary2024Systolic = systolicValue;
+              JessicaTaylorFebruary2024Diastolic = diastolicValue;
+            }
+            if ((entry.month === "March" || entry.month === 3) && entry.year === 2024) {
+              JessicaTaylorMarch2024Systolic = systolicValue;
+              JessicaTaylorMarch2024Diastolic = diastolicValue;
+            }
+          }
+        });
+      }
+      
+      const lineCtx = document.getElementById("lineChart");
+      if (lineCtx) {
+        new Chart(lineCtx, {
+          type: "line",
+          data: {
+            labels: [
+              "Oct. 2023",
+              "Nov. 2023",
+              "Dec. 2023",
+              "Jan. 2024",
+              "Feb. 2024",
+              "Mar. 2024",
+            ],
+            datasets: [
+              {
+                label: "Systolic",
+                data: [JessicaTaylorOctober2023Systolic, JessicaTaylorNovember2023Systolic, JessicaTaylorDecember2023Systolic, JessicaTaylorJanuary2024Systolic, JessicaTaylorFebruary2024Systolic, JessicaTaylorMarch2024Systolic],
+                borderColor: "#C26EB4",
+                fill: false,
+                borderWidth: 3,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+              },
+              {
+                label: "Diastolic",
+                data: [JessicaTaylorOctober2023Diastolic, JessicaTaylorNovember2023Diastolic, JessicaTaylorDecember2023Diastolic, JessicaTaylorJanuary2024Diastolic, JessicaTaylorFebruary2024Diastolic, JessicaTaylorMarch2024Diastolic],
+                borderColor: "#7E6CAB",
+                fill: false,
+                borderWidth: 3,
+                pointRadius: 5,
+                pointHoverRadius: 7,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+              legend: { display: true },
+              filler: {
+                propagate: true
+              }
+            },
+            scales: {
+              y: {
+                min: 60,
+                max: 180,
+                ticks: {
+                  stepSize: 20,
+                },
+                grid: {
+                  color: "#cccccc",
+                  lineWidth: 1,
+                  display: true,
+                },
+              },
+              x: {
+                grid: {
+                  display: false,
+                },
+              },
+            },
+          },
+        });
+        
+        // Set canvas background color
+        lineCtx.style.backgroundColor = "#F4F0FE";
+      }
+    }
     
-    //Blood Pressure Title, legend work and remove the x-axis vertical line up, backgroundColor of chart /'#F4F0FE
-    // 4. Target the canvas element*/
-    const lineCtx = document.getElementById("lineChart");
-    new Chart(lineCtx, {
-      type: "line",
-      data: {
-        labels: [
-          "Oct. 2023",
-          "Nov. 2023",
-          "Dec. 2023",
-          "Jan. 2024",
-          "Feb. 2024",
-          "Mar. 2024",
-        ],
-        datasets: [
-          {
-            label: "Systolic",
-            data: ["125", "173", "91", "128", "119", "160"],
-            borderColor: "#C26EB4",
-            //backgroundColor: "rgba(54, 162, 235, 0.1)",
-            fill: true,
-            tension: 0.4, // Creates smooth, curved lines instead of sharp angles
-            borderWidth: 3,
-            pointRadius: 5, // Size of data point dots
-            pointHoverRadius: 7,
-          },
-          {
-            label: "Diastolic",
-            data: ["103", "103", "111", "86", "73", "78"],
-            borderColor: "#36a2eb",
-            //backgroundColor: "rgba(54, 162, 235, 0.1)",
-            fill: true,
-            tension: 0.4, // Creates smooth, curved lines instead of sharp angles
-            borderWidth: 3,
-            pointRadius: 5, // Size of data point dots
-            pointHoverRadius: 7,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: true, position: "right" },
-        },
-        scales: {
-          //y: { beginAtZero: true },
-          min: 60, // Set manual minimum value
-          max: 180,
-        },
-        ticks: {
-          stepSize: 20,
-        },
-      },
-    });
-  }
-  renderDynamicChart();
+    renderDynamicChart();
+  }, [data, JessicaTaylorObject]);
 
   return (
     <Fragment>
@@ -320,7 +365,7 @@ function App() {
               alt="PatientPicture"
               className="circle-imagePatientInformation"
             />
-          
+          <p className="name-text">Jessica Taylor</p>
           <span>
           <img src="./BirthIcon.jpg" alt="DateOfBirthIcon" />
           Date of Birth
