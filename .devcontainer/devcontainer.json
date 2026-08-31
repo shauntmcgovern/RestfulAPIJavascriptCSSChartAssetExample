@@ -12,7 +12,6 @@
     }
   },
   "postCreateCommand": "npm install --legacy-peer-deps",
-  "postStartCommand": "npm start",
   "customizations": {
     "vscode": {
       "extensions": [

@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start React App",
+      "type": "shell",
+      "command": "npm",
+      "args": ["start"],
+      "problemMatcher": [],
+      "runOn": "folderOpen",
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "Open React App in Browser",
+      "type": "shell",
+      "command": "code",
+      "args": ["--open-url", "simpleBrowser:http://localhost:3000"],
+      "runOn": "folderOpen",
+      "dependsOn": ["Start React App"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared"
+      }
+    }
+  ]
+}
