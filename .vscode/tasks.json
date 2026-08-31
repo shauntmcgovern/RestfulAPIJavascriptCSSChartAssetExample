@@ -19,11 +19,12 @@
     {
       "label": "Open React App in Browser",
       "type": "shell",
-      "command": "code",
-      "args": ["--open-url", "simpleBrowser:http://localhost:3000"],
+      "command": "bash",
+      "args": ["-c", "sleep 3 && code --open-url simpleBrowser:http://localhost:3000"],
       "runOn": "folderOpen",
       "dependsOn": ["Start React App"],
       "problemMatcher": [],
+      "isBackground": true,
       "presentation": {
         "reveal": "silent",
         "panel": "shared"
