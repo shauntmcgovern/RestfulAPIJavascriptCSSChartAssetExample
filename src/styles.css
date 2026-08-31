@@ -296,9 +296,7 @@ body {
   color: #072635;
   scrollbar-color: #072635 #ffffff;
   scrollbar-width: thin;
-  scrollbar-arrow-color: #ffffff;
   outline: 2px solid #ffffff;
-  /* Must hide the scrollbar arrow #ffffff; */
 }
 .no-arrows-scroll::-webkit-scrollbar-track {
   background: #072635;
@@ -313,6 +311,41 @@ body {
 .no-arrows-scroll::-webkit-scrollbar-thumb {
   background: black;
   display: block;
+}
+.no-arrows-scroll::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Clean Scrollbar Class - No Navigation Arrows */
+.scrollbar-no-arrows {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+.scrollbar-no-arrows::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-no-arrows::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.scrollbar-no-arrows::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.scrollbar-no-arrows::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Hide scrollbar arrows (up/down buttons) */
+.scrollbar-no-arrows::-webkit-scrollbar-button {
+  display: none;
 }
 
 /*.visible-scrollbar,
@@ -456,7 +489,6 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/::-webkit-s
   color: #072635;
   scrollbar-color: #072635 #e3e4e6;
   scrollbar-width: thin;
-  scrollbar-arrow-color: #e3e4e6;
 
 
 .scroll-container::-webkit-scrollbar-button {

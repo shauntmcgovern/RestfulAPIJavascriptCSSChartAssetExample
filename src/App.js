@@ -198,11 +198,9 @@ function App() {
     //const apiValues = data.map((item) => item.name === "Jessica Taylor".blood_pressure); // Y-Axis values
     //const JessicaObject = jsonData.filter((obj) => obj.item?.name === "Jessica Taylor");
     
-    const JessicaTaylorObject = data.map(
-      (item) => item.name === "Jessica Taylor"
-    );
+    //const JessicaTaylorObject = data.map((item) => item.name === "Jessica Taylor");
 
-    const JessicaTaylorMonth = JessicaTaylorObject.month;
+    /*const JessicaTaylorMonth = JessicaTaylorObject.month;
     //const JessicaTaylorInformation = jsonData.filter((obj) => obj.item.name === "Jessica Taylor");
     const JessicaTaylorObjectDiagnosisHistory = data.map(
       (item) => JessicaTaylorObject.diagnosis_history
@@ -211,8 +209,9 @@ function App() {
       (item) => JessicaTaylorObjectDiagnosisHistory.month
     );
     //const JessicaTaylorBloodPressure =
+    
     //Blood Pressure Title, legend work and remove the x-axis vertical line up, backgroundColor of chart /'#F4F0FE
-    // 4. Target the canvas element
+    // 4. Target the canvas element*/
     const lineCtx = document.getElementById("lineChart");
     new Chart(lineCtx, {
       type: "line",
