@@ -258,7 +258,10 @@ function App() {
                 data: [JessicaTaylorOctober2023Systolic, JessicaTaylorNovember2023Systolic, JessicaTaylorDecember2023Systolic, JessicaTaylorJanuary2024Systolic, JessicaTaylorFebruary2024Systolic, JessicaTaylorMarch2024Systolic],
                 borderColor: "#C26EB4",
                 fill: false,
+                tension: 0.4,
                 borderWidth: 3,
+                borderJoinStyle: 'miter',
+                borderCapStyle: 'round',
                 pointRadius: 5,
                 pointHoverRadius: 7,
               },
@@ -268,6 +271,9 @@ function App() {
                 borderColor: "#7E6CAB",
                 fill: false,
                 borderWidth: 3,
+                tension: 0.4, 
+                borderJoinStyle: 'miter',
+                borderCapStyle: 'round',
                 pointRadius: 5,
                 pointHoverRadius: 7,
               },
@@ -277,7 +283,7 @@ function App() {
             responsive: true,
             maintainAspectRatio: true,
             plugins: {
-              legend: { display: true },
+              legend: { display: true, position: 'right' },
               filler: {
                 propagate: true
               }
@@ -365,54 +371,62 @@ function App() {
               alt="PatientPicture"
               className="circle-imagePatientInformation"
             />
-          <p className="name-text">Jessica Taylor</p>
-          <span>
-          <img src="./BirthIcon.jpg" alt="DateOfBirthIcon" />
-          Date of Birth
-          </span>&nbsp;&nbsp;
+          <p className="name-textPatientInformation">Jessica Taylor</p>
+          
+          <div>
+          <img src="./BirthIcon.jpg" alt="DateOfBirthIcon" className="iconPatientInformation" />
+          <span class ="textPatientInformation">Date of Birth 
           {JessicaTaylorObject && (
             <p className="name-text">
               {new Date(JessicaTaylorObject.date_of_birth).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
-          )}
-          <span>
-          <img src="./FemaleIcon.jpg" alt="GenderIcon" />
-          Gender
-          </span>&nbsp;&nbsp;
+          )}</span>
+          </div>
+          
+          <div>
+          <img src="./FemaleIcon.jpg" alt="GenderIcon" className="iconPatientInformation" />
+          <span className="textPatientInformation">Gender
           {JessicaTaylorObject && (
             <p className="name-text">
               {JessicaTaylorObject.gender}
             </p>
-          )}
-          <span>
-          <img src="./PhoneIcon.jpg" alt="PhoneIcon" />
-          Contact Info.
-          </span>&nbsp;&nbsp;
+          )}</span>
+          </div>
+        
+          <div>
+          <img src="./PhoneIcon.jpg" alt="PhoneIcon" className="iconPatientInformation" />
+          <span className="textPatientInformation">Contact Info.
           {JessicaTaylorObject && (
             <p className="name-text">
               {JessicaTaylorObject.phone_number}
             </p>
-          )}
-          <span>
-          <img src="./PhoneIcon.jpg" alt="EmergencyPhoneIcon" />
-          Emergency Contacts
-          </span>&nbsp;&nbsp;
+          )}</span>
+          </div>
+          
+          <div>
+          <img src="./PhoneIcon.jpg" alt="EmergencyPhoneIcon" className="iconPatientInformation" />
+          <span className="textPatientInformation">Emergency Contacts
           {JessicaTaylorObject && (
             <p className="name-text">
               {JessicaTaylorObject.emergency_contact}
             </p>
-          )}
-          <span>
-          <img src="./InsuranceIcon.jpg" alt="InsuranceIcon" />
-          Insurance Provider
-          </span>&nbsp;&nbsp;
+          )}</span>
+          </div>
+
+          <div>
+          <img src="./InsuranceIcon.jpg" alt="InsuranceIcon" className="iconPatientInformation" />
+          <span className="textPatientInformation">Insurance Provider
           {JessicaTaylorObject && (
             <p className="name-text">
               {JessicaTaylorObject.insurance_type}
             </p>
-          )}
-          <p>Show All Information</p>
+          )}</span>
           </div>
+
+          <p className="name-textPatientInformation">Show All Information</p>
+          </div>
+
+
           <div class="rectangle-containerLabResults">
             <h2 className="h2">Lab Results'A::A::'A::A::</h2>
           </div>
