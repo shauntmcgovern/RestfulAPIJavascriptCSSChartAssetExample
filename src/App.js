@@ -282,10 +282,31 @@ function App() {
           options: {
             responsive: true,
             maintainAspectRatio: true,
+            layout: {
+              padding: {
+              left: 20 
+             }
+            },
             plugins: {
               legend: { display: true, position: 'right' },
               filler: {
                 propagate: true
+              },
+              title: {
+                display: true,
+                text: 'Blood Pressure',
+                align: 'start', // 👈 Aligns the title to the left edge of the chart
+                color: '#072635',
+                padding: {
+                  left: 20,   // Adds 20px space to the left of the title
+                  top: 20,    // Adds 20px space above the title
+                  bottom: 20   // 20px space below the title
+                },
+                font: {
+                  size: 18,
+                  family: "'Manrope', sans-serif",
+                  weight: 'bold'
+                }
               }
             },
             scales: {
@@ -354,7 +375,7 @@ function App() {
         <div class="column">
           <div class="rectangled-containerDiagnosisHistory">
             <h2 className="h2">Diagnosis History.::/'d</h2>
-            <div>
+            <div class="ChartJSExampleJessicaTaylorsInformation">
               <canvas id="lineChart"></canvas>
             </div>
           </div>
