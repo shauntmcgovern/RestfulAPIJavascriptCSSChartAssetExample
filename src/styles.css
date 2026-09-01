@@ -243,8 +243,8 @@ body {
   height: 72px;*/
 }
 .row {
-  /*flex-wrap: wrap;
-  display: flex;
+  flex-wrap: nowrap;
+  /*display: flex;
   margin-left: auto;
   margin-right: auto;*/
 }
@@ -253,6 +253,7 @@ body {
   /*flex: 50%;
   background-color: #ffffff;*/
   padding: 1rem;
+  flex-wrap: nowrap;
   /*max-width: 25%;*/
   /*margin-left: auto;*/
   /*margin-right: auto;*/
@@ -460,6 +461,19 @@ body {
   text-overflow: ellipsis; /* Handles long names */
   font-family: "Manrope", sans-serif;
   font-weight: bold; /* or 700 */
+}
+.ChartJSExampleJessicaTaylorsInformation {
+  top: 215px;
+  left: 437px;
+  width: 726px;
+  height: 298px;
+  max-width: 800px; /* Required for 'auto' margins to center the element */
+  margin: 20px auto 0;
+  /* UI Properties */
+  background: #F4F0FE 0% 0% no-repeat padding-box;
+  border-radius: 12px;
+  overflow: hidden;    /* Forces the canvas content to respect the curves */
+  opacity: 1;
 }
 /*<!--
 
