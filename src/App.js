@@ -257,24 +257,32 @@ function App() {
                 label: "Systolic",
                 data: [JessicaTaylorOctober2023Systolic, JessicaTaylorNovember2023Systolic, JessicaTaylorDecember2023Systolic, JessicaTaylorJanuary2024Systolic, JessicaTaylorFebruary2024Systolic, JessicaTaylorMarch2024Systolic],
                 borderColor: "#C26EB4",
+                pointBackgroundColor: '#C26EB4',     // Inside fill color of the circle node
                 fill: false,
                 tension: 0.4,
                 borderWidth: 3,
+                pointStyle: 'circle',          // Sets point shape to circle
                 borderJoinStyle: 'miter',
-                borderCapStyle: 'round',
-                pointRadius: 5,
+                borderCapStyle: 'butt',
+                pointBorderColor: '#FFFFFF',         // Outer ring color of the circle node
+                pointBorderWidth: 2,                 // Thickness of the outer circle stroke
+                pointRadius: 6,                      // Total size of the circular point
                 pointHoverRadius: 7,
               },
               {
                 label: "Diastolic",
                 data: [JessicaTaylorOctober2023Diastolic, JessicaTaylorNovember2023Diastolic, JessicaTaylorDecember2023Diastolic, JessicaTaylorJanuary2024Diastolic, JessicaTaylorFebruary2024Diastolic, JessicaTaylorMarch2024Diastolic],
                 borderColor: "#7E6CAB",
+                pointBackgroundColor: '#7E6CAB',     // Inside fill color of the circle node
                 fill: false,
                 borderWidth: 3,
                 tension: 0.4, 
+                pointStyle: 'circle',          // Sets point shape to circle
                 borderJoinStyle: 'miter',
-                borderCapStyle: 'round',
-                pointRadius: 5,
+                borderCapStyle: 'butt',
+                pointBorderColor: '#FFFFFF',         // Outer ring color of the circle node
+                pointBorderWidth: 2,                 // Thickness of the outer circle stroke
+                pointRadius: 6,                      // Total size of the circular point
                 pointHoverRadius: 7,
               },
             ],
@@ -288,7 +296,14 @@ function App() {
              }
             },
             plugins: {
-              legend: { display: true, position: 'right' },
+              legend: { 
+                display: true, 
+                position: 'right', 
+                labels: {
+                  usePointStyle: true, // Forces the legend to use the data point style
+                  pointStyle: 'circle' // Explicitly sets the legend symbol shape to a circle
+                }
+              },
               filler: {
                 propagate: true
               },
@@ -376,6 +391,10 @@ function App() {
           <div class="rectangled-containerDiagnosisHistory">
             <h2 className="h2">Diagnosis History.::/'d</h2>
             <div class="ChartJSExampleJessicaTaylorsInformation">
+              <button id="chartActionButton" class="chart-action-btn">
+                Last 6 months
+                <img src="ArrowDown.jpg" alt="▼" class="btn-arrow" />
+              </button>
               <canvas id="lineChart"></canvas>
             </div>
           </div>
