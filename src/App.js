@@ -347,7 +347,7 @@ function App() {
         });
         
         // Set canvas background color
-        lineCtx.style.backgroundColor = "#F4F0FE";
+        lineCtx.style.backgroundColor = "#FFFF8F";
       }
     }
     
