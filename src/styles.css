@@ -470,7 +470,7 @@ body {
   max-width: 800px; /* Required for 'auto' margins to center the element */
   margin: 20px auto 0;
   /* UI Properties */
-  background: #F4F0FE 0% 0% no-repeat padding-box;
+  background: ##FFFF8F 0% 0% no-repeat padding-box;
   border-radius: 12px;
   overflow: hidden;    /* Forces the canvas content to respect the curves */
   opacity: 1;
